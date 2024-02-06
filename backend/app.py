@@ -5,13 +5,19 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/reverse_string', methods=['POST'])
+
+def rev_str(s: str) -> str:
+    """This is a sample util to demonstrate how to do unit testing in tests/unit/test_utils.py"""
+    return s[::-1]
+
+
+@app.route("/reverse_string", methods=["POST"])
 def reverse_string():
     data = request.json
-    string_to_reverse = data.get('string', '')
-    reversed_string = string_to_reverse[::-1]
-    return jsonify({'reversed_string': reversed_string})
+    string_to_reverse = data.get("string", "")
+    reversed_string = rev_str(string_to_reverse)
+    return jsonify({"reversed_string": reversed_string})
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
-
