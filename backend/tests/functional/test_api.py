@@ -15,3 +15,12 @@ def test_reverse_string(test_client):
     # Assert the status code and the reversed string
     assert response.status_code == 200
     assert response.json == {"reversed_string": test_string[::-1]}
+
+
+def test_health_endpoint(test_client):
+    """Functional Test Example of checking the health endpoint"""
+    # Make a GET request to the health endpoint
+    response = test_client.get("/health")
+    # Assert the status code and the response
+    assert response.status_code == 200
+    assert response.json == {"status": "healthy"}
