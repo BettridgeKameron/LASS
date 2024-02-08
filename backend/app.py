@@ -19,6 +19,36 @@ def reverse_string():
     return jsonify({"reversed_string": reversed_string})
 
 
+@app.route("/api/v1/authorship/writeprint", methods=["POST"])
+def generate_writeprint():
+    return request.json
+
+
+@app.route("/api/v1/authorship/writeprint/<job_id>", methods=["GET"])
+def get_writeprint_results(job_id):
+    return jsonify({"job_id": job_id})
+
+
+@app.route("/api/v1/text/rephrase", methods=["POST"])
+def rephrase():
+    return request.json
+
+
+@app.route("/api/v1/text/obfuscate", methods=["POST"])
+def obfuscate():
+    return request.json
+
+
+@app.route("/api/v1/text/sentiment-analysis", methods=["POST"])
+def sentiment_analysis():
+    return request.json
+
+
+@app.route("/api/v1/text/predict-user-attributes", methods=["POST"])
+def predict_user_attributes():
+    return request.json
+
+
 @app.route("/api/v1/health", methods=["GET"])
 def health():
     return jsonify({"status": "healthy"})
