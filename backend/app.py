@@ -19,5 +19,10 @@ def reverse_string():
     return jsonify({"reversed_string": reversed_string})
 
 
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "healthy"})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
