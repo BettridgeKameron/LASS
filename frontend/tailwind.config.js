@@ -1,3 +1,5 @@
+/*eslint no-undef: "error"*/
+/*eslint-env node*/
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
