@@ -20,7 +20,7 @@ def test_reverse_string(test_client):
 def test_health_endpoint(test_client):
     """Functional Test Example of checking the health endpoint"""
     # Make a GET request to the health endpoint
-    response = test_client.get("/health")
+    response = test_client.get("/api/v1/health")
     # Assert the status code and the response
     assert response.status_code == 200
     assert response.json == {"status": "healthy"}

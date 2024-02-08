@@ -19,7 +19,7 @@ def reverse_string():
     return jsonify({"reversed_string": reversed_string})
 
 
-@app.route("/health", methods=["GET"])
+@app.route("/api/v1/health", methods=["GET"])
 def health():
     return jsonify({"status": "healthy"})
 
