@@ -1,4 +1,3 @@
-import type { VueElement } from 'vue';
 <template>
   <div class="p-8">
     <div class="text-center mb-12">
@@ -176,7 +175,7 @@ import type { VueElement } from 'vue';
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'HomePage',
   data() {
     return {
       teamMembers: [
