@@ -50,11 +50,34 @@
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
-        <div v-for="member in teamMembers" :key="member.name" class="card bordered">
-          <figure><img :src="member.photo" :alt="`Photo of ${member.name}.`" /></figure>
+        <div v-for="member in teamMembers" :key="member.name">
+          <div class="group h-96 w-90 [perspective:1000px]">
+            <div
+              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+            >
+              <div class="absolute inset-0">
+                <img
+                  class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                  :src="member.photo"
+                  alt="`Photo of ${professor.name}.`"
+                />
+              </div>
+              <div
+                class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+              >
+                <div class="flex min-h-full flex-col items-center justify-center">
+                  <h1 class="text-3xl font-bold">{{ member.name }}</h1>
+                  <br />
+                  <p class="text-base">{{ member.major }}</p>
+                  <br />
+                </div>
+              </div>
+            </div>
+
+            <!--<figure><img :src="member.photo" :alt="`Photo of ${member.name}.`" /></figure>
           <div class="card-body">
             <h3 class="card-title">{{ member.name }}</h3>
-            <p>{{ member.major }}</p>
+            <p>{{ member.major }}</p> -->
           </div>
         </div>
       </div>
@@ -64,25 +87,37 @@
       <h2 class="text-3xl font-bold mb-4">Instructors & External Advisors</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Professor loop -->
-        <div v-for="professor in professors" :key="professor.name" class="card bordered">
-            <div class="group h-96 w-90 [perspective:1000px]">
-              <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                <div class="absolute inset-0">
-                  <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40" :src="professor.photo" alt="`Photo of ${professor.name}.`" />
-                </div>
-                <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                  <div class="flex min-h-full flex-col items-center justify-center">
-                    <h1 class="text-3xl font-bold">{{ professor.name }}</h1>
-                    <br>
-                    <p class="text-base">{{ professor.role }}</p>
-                    <br>
-                      <a :href="professor.info" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                      Read more</a>
-                </div>
+        <div v-for="professor in professors" :key="professor.name">
+          <div class="group h-96 w-90 [perspective:1000px]">
+            <div
+              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+            >
+              <div class="absolute inset-0">
+                <img
+                  class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                  :src="professor.photo"
+                  alt="`Photo of ${professor.name}.`"
+                />
+              </div>
+              <div
+                class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+              >
+                <div class="flex min-h-full flex-col items-center justify-center">
+                  <h1 class="text-3xl font-bold">{{ professor.name }}</h1>
+                  <br />
+                  <p class="text-base">{{ professor.role }}</p>
+                  <br />
+                  <a
+                    :href="professor.info"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  >
+                    Read more</a
+                  >
                 </div>
               </div>
             </div>
-            <!--
+          </div>
+          <!--
             <figure><img :src="professor.photo" :alt="`Photo of ${professor.name}.`" /></figure>
             <div class="card-body">
               <h3 class="card-title">{{ professor.name }}</h3>
@@ -190,7 +225,6 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 
@@ -205,10 +239,30 @@ export default defineComponent({
         { name: 'Zachary Wilhite', major: 'CSE and Psychology', photo: '/img/zach.jpg' }
       ],
       professors: [
-        { name: 'David Feil-Seifer', role: 'Instructor', photo: '/img/david.jpg', info: 'https://www.unr.edu/cse/people/david-feil-seifer'},
-        { name: 'Devrin Lee', role: 'Instructor', photo: '/img/devrin.jpg', info: 'https://www.unr.edu/engineering/about/innovation-day/computer-science-and-engineering'},
-        { name: 'Sara Davis', role: 'Instructor', photo: '/img/sara.jpg', info: 'https://www.unr.edu/cse/people/sara-davis' },
-        { name: 'Emily Hand', role: 'Advisor', photo: '/img/emily.jpg', info: 'https://www.unr.edu/cse/people/emily-hand'}
+        {
+          name: 'David Feil-Seifer',
+          role: 'Instructor',
+          photo: '/img/david.jpg',
+          info: 'https://www.unr.edu/cse/people/david-feil-seifer'
+        },
+        {
+          name: 'Devrin Lee',
+          role: 'Instructor',
+          photo: '/img/devrin.jpg',
+          info: 'https://www.unr.edu/engineering/about/innovation-day/computer-science-and-engineering'
+        },
+        {
+          name: 'Sara Davis',
+          role: 'Instructor',
+          photo: '/img/sara.jpg',
+          info: 'https://www.unr.edu/cse/people/sara-davis'
+        },
+        {
+          name: 'Emily Hand',
+          role: 'Advisor',
+          photo: '/img/emily.jpg',
+          info: 'https://www.unr.edu/cse/people/emily-hand'
+        }
       ]
     }
   }
