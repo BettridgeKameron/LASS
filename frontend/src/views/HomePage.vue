@@ -48,7 +48,7 @@
     <div class="mb-12">
       <h2 class="text-3xl font-bold mb-4">Team Information</h2>
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
-      <h2 class="text-2xl font-bold mb-4 text-primary">Click on images for more info!</h2>
+      <h2 class="text-2xl font-bold mb-4 text-info">Click on images for more info!</h2>
       <br />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
