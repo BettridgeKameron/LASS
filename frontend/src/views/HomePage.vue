@@ -56,7 +56,14 @@
             class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
           >
             <div class="text-center font-bold text-neutral-content">
-              <a class="text-3xl link font-underline" role="link" :aria-label="`Learn more about ${member.name}`" target="_blank" :href="member.infoUrl">{{ member.name }}</a>
+              <a
+                class="text-3xl link font-underline"
+                role="link"
+                :aria-label="`Learn more about ${member.name}`"
+                target="_blank"
+                :href="member.infoUrl"
+                >{{ member.name }}</a
+              >
               <p class="text-2xl">{{ member.major }} Major</p>
             </div>
           </div>
@@ -74,7 +81,14 @@
             class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
           >
             <div class="text-center font-bold text-neutral-content">
-              <a class="text-3xl link font-underline" role="link" :aria-label="`Learn more about ${professor.name}`" target="_blank" :href="professor.infoUrl">{{ professor.name }}</a>
+              <a
+                class="text-3xl link font-underline"
+                role="link"
+                :aria-label="`Learn more about ${professor.name}`"
+                target="_blank"
+                :href="professor.infoUrl"
+                >{{ professor.name }}</a
+              >
               <p class="text-2xl">{{ professor.role }}</p>
             </div>
           </div>
@@ -187,16 +201,56 @@ export default defineComponent({
   data() {
     return {
       teamMembers: [
-        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg', infoUrl: 'https://linkedin.com/in/kbettridge' },
-        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg', infoUrl: 'https://linkedin.com/in/leungalvin2024' },
-        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg', infoUrl: 'https://www.linkedin.com/in/raymond-pai-0437a2270' },
-        { name: 'Zachary Wilhite', major: 'CSE and Psychology', photo: '/img/zach.jpg', infoUrl: 'https://github.com/agentz101' }
+        {
+          name: 'Kameron Bettridge',
+          major: 'CSE',
+          photo: '/img/kameron.jpg',
+          infoUrl: 'https://linkedin.com/in/kbettridge'
+        },
+        {
+          name: 'Alvin Leung',
+          major: 'CSE',
+          photo: '/img/alvin.jpg',
+          infoUrl: 'https://linkedin.com/in/leungalvin2024'
+        },
+        {
+          name: 'Raymond Pai',
+          major: 'CSE',
+          photo: '/img/raymond.jpg',
+          infoUrl: 'https://www.linkedin.com/in/raymond-pai-0437a2270'
+        },
+        {
+          name: 'Zachary Wilhite',
+          major: 'CSE and Psychology',
+          photo: '/img/zach.jpg',
+          infoUrl: 'https://github.com/agentz101'
+        }
       ],
       professors: [
-        { name: 'David Feil-Seifer', role: 'Instructor', photo: '/img/david.jpg', infoUrl: 'https://www.unr.edu/cse/people/david-feil-seifer' },
-        { name: 'Devrin Lee', role: 'Instructor', photo: '/img/devrin.jpg', infoUrl: 'https://www.linkedin.com/in/devrinlee' },
-        { name: 'Sara Davis', role: 'Instructor', photo: '/img/sara.jpg', infoUrl: 'https://www.unr.edu/cse/people/sara-davis' },
-        { name: 'Emily Hand', role: 'Advisor', photo: '/img/emily.jpg', infoUrl: 'https://www.unr.edu/cse/people/emily-hand' }
+        {
+          name: 'David Feil-Seifer',
+          role: 'Instructor',
+          photo: '/img/david.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/david-feil-seifer'
+        },
+        {
+          name: 'Devrin Lee',
+          role: 'Instructor',
+          photo: '/img/devrin.jpg',
+          infoUrl: 'https://www.linkedin.com/in/devrinlee'
+        },
+        {
+          name: 'Sara Davis',
+          role: 'Instructor',
+          photo: '/img/sara.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/sara-davis'
+        },
+        {
+          name: 'Emily Hand',
+          role: 'Advisor',
+          photo: '/img/emily.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/emily-hand'
+        }
       ]
     }
   }
