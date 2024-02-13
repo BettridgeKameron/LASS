@@ -53,22 +53,12 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
         <div v-for="member in teamMembers" :key="member.name" class="relative">
-          <img :src="member.photo" :alt="`Photo of ${member.name}`" class="w-full h-auto" />
-          <div
-            class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
-          >
-            <div class="text-center font-bold text-neutral-content">
-              <a
-                class="text-3xl link font-underline"
-                role="link"
-                :aria-label="`Learn more about ${member.name}`"
-                target="_blank"
-                :href="member.infoUrl"
-                >{{ member.name }}</a
-              >
-              <p class="text-2xl">{{ member.major }} Major</p>
-            </div>
-          </div>
+          <PersonCard
+            :photo="member.photo"
+            :name="member.name"
+            :infoUrl="member.infoUrl"
+            :description="`${member.major} Major`"
+          />
         </div>
       </div>
     </div>
@@ -78,22 +68,12 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Professor loop -->
         <div v-for="professor in professors" :key="professor.name" class="relative">
-          <img :src="professor.photo" :alt="`Photo of ${professor.name}`" class="w-full h-auto" />
-          <div
-            class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
-          >
-            <div class="text-center font-bold text-neutral-content">
-              <a
-                class="text-3xl link font-underline"
-                role="link"
-                :aria-label="`Learn more about ${professor.name}`"
-                target="_blank"
-                :href="professor.infoUrl"
-                >{{ professor.name }}</a
-              >
-              <p class="text-2xl">{{ professor.role }}</p>
-            </div>
-          </div>
+          <PersonCard
+            :photo="professor.photo"
+            :name="professor.name"
+            :infoUrl="professor.infoUrl"
+            :description="professor.role"
+          />
         </div>
       </div>
     </div>
@@ -202,9 +182,13 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import PersonCard from '@/components/PersonCard.vue'
 
 export default defineComponent({
   name: 'HomePage',
+  components: {
+    PersonCard
+  },
   data() {
     return {
       teamMembers: [
