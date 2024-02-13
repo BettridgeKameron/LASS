@@ -56,10 +56,13 @@
           <div class="group h-96 w-90 [perspective:1000px]">
             <div
               @click="toggleCardFlip(member)"
-              :style="{ transform: member.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }"
+              :style="{
+                transform: member.isFlipped ? 'rotateY(180.0deg)' : 'rotateY(0deg)',
+                willChange: 'transform'
+              }"
               class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d]"
             >
-              <div class="absolute inset-0">
+              <div class="absolute inset-0 backdrop-blur-md">
                 <img
                   class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
                   :src="member.photo"
@@ -67,12 +70,12 @@
                 />
               </div>
               <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-gray-500 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
               >
                 <div class="flex min-h-full flex-col items-center justify-center">
-                  <h1 class="text-3xl font-bold">{{ member.name }}</h1>
+                  <h1 class="text-base-content text-3xl font-bold">{{ member.name }}</h1>
                   <br />
-                  <p class="text-base">{{ member.major }}</p>
+                  <p class="text-base-content">{{ member.major }}</p>
                   <br />
                 </div>
               </div>
@@ -108,16 +111,16 @@
                 />
               </div>
               <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-gray-500 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
               >
                 <div class="flex min-h-full flex-col items-center justify-center">
-                  <h1 class="text-3xl font-bold">{{ professor.name }}</h1>
+                  <h1 class="text-base-content text-3xl font-bold">{{ professor.name }}</h1>
                   <br />
-                  <p class="text-base">{{ professor.role }}</p>
+                  <p class="text-base-content">{{ professor.role }}</p>
                   <br />
                   <a
                     :href="professor.info"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    class="text-base-content focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 bg-base-100 hover:bg-neutral focus:outline-none dark:focus:ring-blue-800"
                   >
                     Read more</a
                   >
