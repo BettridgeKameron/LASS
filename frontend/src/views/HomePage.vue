@@ -47,13 +47,17 @@
     <!-- There may be a component to replace the next div entirely, as we use it again for professors. If not this is a good thing to make into a component!-->
     <div class="mb-12">
       <h2 class="text-3xl font-bold mb-4">Team Information</h2>
+      <h2 class="text-2xl font-bold mb-4 text-blue-500">Click on an image for more information!</h2>
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
+      <br />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
         <div v-for="member in teamMembers" :key="member.name">
           <div class="group h-96 w-90 [perspective:1000px]">
             <div
-              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+              @click="toggleCardFlip(member)"
+              :style="{ transform: member.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }"
+              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d]"
             >
               <div class="absolute inset-0">
                 <img
@@ -63,7 +67,7 @@
                 />
               </div>
               <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                class="absolute inset-0 h-full w-full rounded-xl bg-gray-500 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
               >
                 <div class="flex min-h-full flex-col items-center justify-center">
                   <h1 class="text-3xl font-bold">{{ member.name }}</h1>
@@ -88,9 +92,13 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Professor loop -->
         <div v-for="professor in professors" :key="professor.name">
-          <div class="group h-96 w-90 [perspective:1000px]">
+          <div
+            class="group h-96 w-90 [perspective:1000px] transition-transform duration-500 ease-in-out"
+          >
             <div
-              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+              @click="toggleCardFlip(professor)"
+              :style="{ transform: professor.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }"
+              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d]"
             >
               <div class="absolute inset-0">
                 <img
@@ -100,7 +108,7 @@
                 />
               </div>
               <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
+                class="absolute inset-0 h-full w-full rounded-xl bg-gray-500 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
               >
                 <div class="flex min-h-full flex-col items-center justify-center">
                   <h1 class="text-3xl font-bold">{{ professor.name }}</h1>
@@ -228,42 +236,64 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+interface Card {
+  name: string
+  major?: string
+  role?: string
+  info?: string
+  photo: string
+  isFlipped: boolean
+}
 export default defineComponent({
   name: 'HomePage',
   data() {
     return {
       teamMembers: [
-        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg' },
-        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg' },
-        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg' },
-        { name: 'Zachary Wilhite', major: 'CSE and Psychology', photo: '/img/zach.jpg' }
-      ],
+        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg', isFlipped: false },
+        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg', isFlipped: false },
+        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg', isFlipped: false },
+        {
+          name: 'Zachary Wilhite',
+          major: 'CSE and Psychology',
+          photo: '/img/zach.jpg',
+          isFlipped: false
+        }
+      ] as Card[],
       professors: [
         {
           name: 'David Feil-Seifer',
           role: 'Instructor',
           photo: '/img/david.jpg',
-          info: 'https://www.unr.edu/cse/people/david-feil-seifer'
+          info: 'https://www.unr.edu/cse/people/david-feil-seifer',
+          isFlipped: false
         },
         {
           name: 'Devrin Lee',
           role: 'Instructor',
           photo: '/img/devrin.jpg',
-          info: 'https://www.unr.edu/engineering/about/innovation-day/computer-science-and-engineering'
+          info: 'https://www.unr.edu/engineering/about/innovation-day/computer-science-and-engineering',
+          isFlipped: false
         },
         {
           name: 'Sara Davis',
           role: 'Instructor',
           photo: '/img/sara.jpg',
-          info: 'https://www.unr.edu/cse/people/sara-davis'
+          info: 'https://www.unr.edu/cse/people/sara-davis',
+          isFlipped: false
         },
         {
           name: 'Emily Hand',
           role: 'Advisor',
           photo: '/img/emily.jpg',
-          info: 'https://www.unr.edu/cse/people/emily-hand'
+          info: 'https://www.unr.edu/cse/people/emily-hand',
+          isFlipped: false
         }
-      ]
+      ] as Card[]
+    }
+  },
+  methods: {
+    toggleCardFlip(card: Card) {
+      card.isFlipped = !card.isFlipped
     }
   }
 })
