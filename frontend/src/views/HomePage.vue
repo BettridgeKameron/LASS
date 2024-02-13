@@ -47,7 +47,6 @@
     <!-- There may be a component to replace the next div entirely, as we use it again for professors. If not this is a good thing to make into a component!-->
     <div class="mb-12">
       <h2 class="text-3xl font-bold mb-4">Team Information</h2>
-      <h2 class="text-2xl font-bold mb-4 text-blue-500">Click on an image for more information!</h2>
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
       <br />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -68,6 +67,9 @@
                   :src="member.photo"
                   alt="`Photo of ${professor.name}.`"
                 />
+                <div class="absolute top-4 left-4 flex items-center justify-center">
+                  <h2 class="text-2xl font-bold mb-4 text text-warning">Click for more info!</h2>
+                </div>
               </div>
               <div
                 class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
@@ -109,6 +111,9 @@
                   :src="professor.photo"
                   alt="`Photo of ${professor.name}.`"
                 />
+                <div class="absolute top-4 left-4 flex items-center justify-center">
+                  <h2 class="text-2xl font-bold mb-4 text text-warning">Click for more info!</h2>
+                </div>
               </div>
               <div
                 class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
