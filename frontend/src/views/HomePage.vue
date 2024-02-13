@@ -48,43 +48,17 @@
     <div class="mb-12">
       <h2 class="text-3xl font-bold mb-4">Team Information</h2>
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
-      <h2 class="text-2xl font-bold mb-4 text-info">Click on images for more info!</h2>
-      <br />
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
-        <div v-for="member in teamMembers" :key="member.name">
-          <div class="group h-96 w-90 [perspective:1000px]">
-            <div
-              @click="toggleCardFlip(member)"
-              :style="{
-                transform: member.isFlipped ? 'rotateY(180.0deg)' : 'rotateY(0deg)',
-                willChange: 'transform'
-              }"
-              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d]"
-            >
-              <div class="absolute inset-0 backdrop-blur-md">
-                <img
-                  class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                  :src="member.photo"
-                  alt="`Photo of ${professor.name}.`"
-                />
-              </div>
-              <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
-              >
-                <div class="flex min-h-full flex-col items-center justify-center">
-                  <h1 class="text-base-content text-3xl font-bold">{{ member.name }}</h1>
-                  <br />
-                  <p class="text-base-content">{{ member.major }}</p>
-                  <br />
-                </div>
-              </div>
+        <div v-for="member in teamMembers" :key="member.name" class="relative">
+          <img :src="member.photo" :alt="`Photo of ${member.name}`" class="w-full h-auto" />
+          <div
+            class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+          >
+            <div class="text-center font-bold text-neutral-content">
+              <a class="text-3xl link font-underline" role="link" :aria-label="`Learn more about ${member.name}`" target="_blank" :href="member.infoUrl">{{ member.name }}</a>
+              <p class="text-2xl">{{ member.major }} Major</p>
             </div>
-
-            <!--<figure><img :src="member.photo" :alt="`Photo of ${member.name}.`" /></figure>
-          <div class="card-body">
-            <h3 class="card-title">{{ member.name }}</h3>
-            <p>{{ member.major }}</p> -->
           </div>
         </div>
       </div>
@@ -94,47 +68,16 @@
       <h2 class="text-3xl font-bold mb-4">Instructors & External Advisors</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Professor loop -->
-        <div v-for="professor in professors" :key="professor.name">
+        <div v-for="professor in professors" :key="professor.name" class="relative">
+          <img :src="professor.photo" :alt="`Photo of ${professor.name}`" class="w-full h-auto" />
           <div
-            class="group h-96 w-90 [perspective:1000px] transition-transform duration-500 ease-in-out"
+            class="absolute inset-0 bg-neutral bg-opacity-0 hover:bg-opacity-50 flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out"
           >
-            <div
-              @click="toggleCardFlip(professor)"
-              :style="{ transform: professor.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }"
-              class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d]"
-            >
-              <div class="absolute inset-0">
-                <img
-                  class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
-                  :src="professor.photo"
-                  alt="`Photo of ${professor.name}.`"
-                />
-              </div>
-              <div
-                class="absolute inset-0 h-full w-full rounded-xl bg-base-300 px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]"
-              >
-                <div class="flex min-h-full flex-col items-center justify-center">
-                  <h1 class="text-base-content text-3xl font-bold">{{ professor.name }}</h1>
-                  <br />
-                  <p class="text-base-content">{{ professor.role }}</p>
-                  <br />
-                  <a
-                    :href="professor.info"
-                    class="text-base-content focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 bg-base-100 hover:bg-neutral focus:outline-none dark:focus:ring-blue-800"
-                  >
-                    Read more</a
-                  >
-                </div>
-              </div>
+            <div class="text-center font-bold text-neutral-content">
+              <a class="text-3xl link font-underline" role="link" :aria-label="`Learn more about ${professor.name}`" target="_blank" :href="professor.infoUrl">{{ professor.name }}</a>
+              <p class="text-2xl">{{ professor.role }}</p>
             </div>
           </div>
-          <!--
-            <figure><img :src="professor.photo" :alt="`Photo of ${professor.name}.`" /></figure>
-            <div class="card-body">
-              <h3 class="card-title">{{ professor.name }}</h3>
-              <p>{{ professor.role }}</p>
-            </div>
-            -->
         </div>
       </div>
     </div>
@@ -239,64 +182,22 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-interface Card {
-  name: string
-  major?: string
-  role?: string
-  info?: string
-  photo: string
-  isFlipped: boolean
-}
 export default defineComponent({
   name: 'HomePage',
   data() {
     return {
       teamMembers: [
-        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg', isFlipped: false },
-        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg', isFlipped: false },
-        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg', isFlipped: false },
-        {
-          name: 'Zachary Wilhite',
-          major: 'CSE and Psychology',
-          photo: '/img/zach.jpg',
-          isFlipped: false
-        }
-      ] as Card[],
+        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg', infoUrl: 'https://linkedin.com/in/kbettridge' },
+        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg', infoUrl: 'https://linkedin.com/in/leungalvin2024' },
+        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg', infoUrl: 'https://www.linkedin.com/in/raymond-pai-0437a2270' },
+        { name: 'Zachary Wilhite', major: 'CSE and Psychology', photo: '/img/zach.jpg', infoUrl: 'https://github.com/agentz101' }
+      ],
       professors: [
-        {
-          name: 'David Feil-Seifer',
-          role: 'Instructor',
-          photo: '/img/david.jpg',
-          info: 'https://www.unr.edu/cse/people/david-feil-seifer',
-          isFlipped: false
-        },
-        {
-          name: 'Devrin Lee',
-          role: 'Instructor',
-          photo: '/img/devrin.jpg',
-          info: 'https://www.unr.edu/engineering/about/innovation-day/computer-science-and-engineering',
-          isFlipped: false
-        },
-        {
-          name: 'Sara Davis',
-          role: 'Instructor',
-          photo: '/img/sara.jpg',
-          info: 'https://www.unr.edu/cse/people/sara-davis',
-          isFlipped: false
-        },
-        {
-          name: 'Emily Hand',
-          role: 'Advisor',
-          photo: '/img/emily.jpg',
-          info: 'https://www.unr.edu/cse/people/emily-hand',
-          isFlipped: false
-        }
-      ] as Card[]
-    }
-  },
-  methods: {
-    toggleCardFlip(card: Card) {
-      card.isFlipped = !card.isFlipped
+        { name: 'David Feil-Seifer', role: 'Instructor', photo: '/img/david.jpg', infoUrl: 'https://www.unr.edu/cse/people/david-feil-seifer' },
+        { name: 'Devrin Lee', role: 'Instructor', photo: '/img/devrin.jpg', infoUrl: 'https://www.linkedin.com/in/devrinlee' },
+        { name: 'Sara Davis', role: 'Instructor', photo: '/img/sara.jpg', infoUrl: 'https://www.unr.edu/cse/people/sara-davis' },
+        { name: 'Emily Hand', role: 'Advisor', photo: '/img/emily.jpg', infoUrl: 'https://www.unr.edu/cse/people/emily-hand' }
+      ]
     }
   }
 })
