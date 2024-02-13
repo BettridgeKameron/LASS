@@ -16,6 +16,7 @@
           class="link link-info"
           role="link"
           aria-label="Learn more about stylometry on Wikipedia"
+          target="_blank"
           href="https://en.wikipedia.org/wiki/Stylometry"
         >
           stylometry.</a
@@ -30,6 +31,7 @@
           class="link link-info"
           role="link"
           aria-label="Learn more about forensic linguistics on Wikipedia"
+          target="_blank"
           href="https://en.wikipedia.org/wiki/Forensic_linguistics"
         >
           forensic linguistics,</a
@@ -106,6 +108,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about The Routledge Handbook of Forensic Linguistics"
+              target="_blank"
               href="https://www.routledge.com/The-Routledge-Handbook-of-Forensic-Linguistics/Coulthard-May-Sousa-Silva/p/book/9780367531225"
               >The Routledge Handbook of Forensic Linguistics</a
             >
@@ -119,6 +122,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about Stylometry from Whonix"
+              target="_blank"
               href="https://www.whonix.org/wiki/Stylometry"
               >Whonix Wiki page on stylometry</a
             >
@@ -128,6 +132,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about the Java Graphical Authorship Attribution Program"
+              target="_blank"
               href="http://evllabs.github.io/JGAAP/"
               >Java Graphical Authorship Attribution Program</a
             >
@@ -137,6 +142,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about Anonymouth"
+              target="_blank"
               href="https://github.com/psal/anonymouth"
               >Anonymouth</a
             >
@@ -162,6 +168,7 @@
               class="link"
               role="link"
               aria-label="Learn more about Writeprints"
+              target="_blank"
               href="https://doi.org/10.1145/1344411.1344413"
               >https://doi.org/10.1145/1344411.1344413</a
             >
