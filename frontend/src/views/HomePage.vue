@@ -16,6 +16,7 @@
           class="link link-info"
           role="link"
           aria-label="Learn more about stylometry on Wikipedia"
+          target="_blank"
           href="https://en.wikipedia.org/wiki/Stylometry"
         >
           stylometry.</a
@@ -30,6 +31,7 @@
           class="link link-info"
           role="link"
           aria-label="Learn more about forensic linguistics on Wikipedia"
+          target="_blank"
           href="https://en.wikipedia.org/wiki/Forensic_linguistics"
         >
           forensic linguistics,</a
@@ -50,12 +52,13 @@
       <p class="text-lg mb-2">Team 18, LASS (Formerly CSFA)</p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Team members loop -->
-        <div v-for="member in teamMembers" :key="member.name" class="card bordered">
-          <figure><img :src="member.photo" :alt="`Photo of ${member.name}.`" /></figure>
-          <div class="card-body">
-            <h3 class="card-title">{{ member.name }}</h3>
-            <p>{{ member.major }}</p>
-          </div>
+        <div v-for="member in teamMembers" :key="member.name" class="relative">
+          <PersonCard
+            :photo="member.photo"
+            :name="member.name"
+            :infoUrl="member.infoUrl"
+            :description="`${member.major} Major`"
+          />
         </div>
       </div>
     </div>
@@ -64,12 +67,13 @@
       <h2 class="text-3xl font-bold mb-4">Instructors & External Advisors</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <!-- Professor loop -->
-        <div v-for="professor in professors" :key="professor.name" class="card bordered">
-          <figure><img :src="professor.photo" :alt="`Photo of ${professor.name}.`" /></figure>
-          <div class="card-body">
-            <h3 class="card-title">{{ professor.name }}</h3>
-            <p>{{ professor.role }}</p>
-          </div>
+        <div v-for="professor in professors" :key="professor.name" class="relative">
+          <PersonCard
+            :photo="professor.photo"
+            :name="professor.name"
+            :infoUrl="professor.infoUrl"
+            :description="professor.role"
+          />
         </div>
       </div>
     </div>
@@ -84,6 +88,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about The Routledge Handbook of Forensic Linguistics"
+              target="_blank"
               href="https://www.routledge.com/The-Routledge-Handbook-of-Forensic-Linguistics/Coulthard-May-Sousa-Silva/p/book/9780367531225"
               >The Routledge Handbook of Forensic Linguistics</a
             >
@@ -97,6 +102,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about Stylometry from Whonix"
+              target="_blank"
               href="https://www.whonix.org/wiki/Stylometry"
               >Whonix Wiki page on stylometry</a
             >
@@ -106,6 +112,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about the Java Graphical Authorship Attribution Program"
+              target="_blank"
               href="http://evllabs.github.io/JGAAP/"
               >Java Graphical Authorship Attribution Program</a
             >
@@ -115,6 +122,7 @@
               class="link link-info"
               role="link"
               aria-label="Learn more about Anonymouth"
+              target="_blank"
               href="https://github.com/psal/anonymouth"
               >Anonymouth</a
             >
@@ -140,6 +148,7 @@
               class="link"
               role="link"
               aria-label="Learn more about Writeprints"
+              target="_blank"
               href="https://doi.org/10.1145/1344411.1344413"
               >https://doi.org/10.1145/1344411.1344413</a
             >
@@ -173,22 +182,66 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import PersonCard from '@/components/PersonCard.vue'
 
 export default defineComponent({
   name: 'HomePage',
+  components: {
+    PersonCard
+  },
   data() {
     return {
       teamMembers: [
-        { name: 'Kameron Bettridge', major: 'CSE', photo: '/img/kameron.jpg' },
-        { name: 'Alvin Leung', major: 'CSE', photo: '/img/alvin.jpg' },
-        { name: 'Raymond Pai', major: 'CSE', photo: '/img/raymond.jpg' },
-        { name: 'Zachary Wilhite', major: 'CSE and Psychology', photo: '/img/zach.jpg' }
+        {
+          name: 'Kameron Bettridge',
+          major: 'CSE',
+          photo: '/img/kameron.jpg',
+          infoUrl: 'https://linkedin.com/in/kbettridge'
+        },
+        {
+          name: 'Alvin Leung',
+          major: 'CSE',
+          photo: '/img/alvin.jpg',
+          infoUrl: 'https://linkedin.com/in/leungalvin2024'
+        },
+        {
+          name: 'Raymond Pai',
+          major: 'CSE',
+          photo: '/img/raymond.jpg',
+          infoUrl: 'https://www.linkedin.com/in/raymond-pai-0437a2270'
+        },
+        {
+          name: 'Zachary Wilhite',
+          major: 'CSE and Psychology',
+          photo: '/img/zach.jpg',
+          infoUrl: 'https://github.com/agentz101'
+        }
       ],
       professors: [
-        { name: 'David Feil-Seifer', role: 'Instructor', photo: '/img/david.jpg' },
-        { name: 'Devrin Lee', role: 'Instructor', photo: '/img/devrin.jpg' },
-        { name: 'Sara Davis', role: 'Instructor', photo: '/img/sara.jpg' },
-        { name: 'Emily Hand', role: 'Advisor', photo: '/img/emily.jpg' }
+        {
+          name: 'David Feil-Seifer',
+          role: 'Instructor',
+          photo: '/img/david.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/david-feil-seifer'
+        },
+        {
+          name: 'Devrin Lee',
+          role: 'Instructor',
+          photo: '/img/devrin.jpg',
+          infoUrl: 'https://www.linkedin.com/in/devrinlee'
+        },
+        {
+          name: 'Sara Davis',
+          role: 'Instructor',
+          photo: '/img/sara.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/sara-davis'
+        },
+        {
+          name: 'Emily Hand',
+          role: 'Advisor',
+          photo: '/img/emily.jpg',
+          infoUrl: 'https://www.unr.edu/cse/people/emily-hand'
+        }
       ]
     }
   }
