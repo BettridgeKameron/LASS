@@ -28,11 +28,14 @@
         </ul>
       </div>
 
-      <a class="btn btn-ghost text-xl">LASS</a>
+      
 
       <!-- This div is for wider screens -->
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
+          <li><button @click="changeURL('/')" variant="primary">LASS</button></li>
+          <li><button @click="changeURL('/visual-test')">Visual Test</button></li>
+          <li><button @click="changeURL('/string-input')">String Input</button></li>
           <li><a>Coming Soon...</a></li>
         </ul>
       </div>
@@ -83,8 +86,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'App'
-})
+//import { defineComponent } from 'vue'
+//export default defineComponent({
+//  name: 'App'
+
+//}){
+export default{
+  methods: {
+    changeURL(newPath: string){
+      //Change the URL to specified path
+      this.$router.push(newPath);
+    },
+  },
+  
+};
 </script>
