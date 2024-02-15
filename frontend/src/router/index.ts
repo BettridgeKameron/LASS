@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StringInput from '@/components/StringInput.vue'
 import HomePage from '@/views/HomePage.vue'
-import VisualTest from '@/views/VisualTest.vue'
 
 const routes = [
   {
@@ -13,11 +12,6 @@ const routes = [
     path: '/string-input',
     name: 'string-input',
     component: StringInput
-  },
-  {
-    path: '/visual-test',
-    name: 'visual-test',
-    component: VisualTest
   }
 ]
 

@@ -24,19 +24,16 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a>Coming Soon...</a></li>
+          <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
 
-      
+      <router-link class="btn btn-ghost text-xl" to="/">LASS</router-link>
 
       <!-- This div is for wider screens -->
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><button @click="changeURL('/')" variant="primary">LASS</button></li>
-          <li><button @click="changeURL('/visual-test')">Visual Test</button></li>
-          <li><button @click="changeURL('/string-input')">String Input</button></li>
-          <li><a>Coming Soon...</a></li>
+          <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
     </div>
@@ -86,18 +83,8 @@
 </template>
 
 <script lang="ts">
-//import { defineComponent } from 'vue'
-//export default defineComponent({
-//  name: 'App'
-
-//}){
-export default{
-  methods: {
-    changeURL(newPath: string){
-      //Change the URL to specified path
-      this.$router.push(newPath);
-    },
-  },
-  
-};
+import { defineComponent } from 'vue'
+export default defineComponent({
+  name: 'App'
+})
 </script>
