@@ -24,16 +24,16 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
-          <li><a>Coming Soon...</a></li>
+          <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
 
-      <a class="btn btn-ghost text-xl">LASS</a>
+      <router-link class="btn btn-ghost text-xl" to="/">LASS</router-link>
 
       <!-- This div is for wider screens -->
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li><a>Coming Soon...</a></li>
+          <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
     </div>
