@@ -25,20 +25,36 @@
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
           <li class="nav-item active">
-            <router-link class="nav-link" to="/string-input">Coming Soon...</router-link>
+            <router-link class="nav-link" to="/string-input">StringInput</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab1</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab2</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab3</router-link>
           </li>
         </ul>
       </div>
 
       <!-- <a :href= "'/'" class="btn btn-ghost text-xl">LASS</a> -->
-      <router-link to="/" class="btn btn-ghost text-xl">
-        LASS
-      </router-link>
+      <router-link to="/" class="btn btn-ghost text-xl"> LASS </router-link>
       <!-- This div is for wider screens -->
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li class ="nav-item active">
-            <router-link class="nav-link" to="/string-input">Coming Soon...</router-link>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/string-input">StringInput</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab1</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab2</router-link>
+          </li>
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/">Tab3</router-link>
           </li>
         </ul>
       </div>
