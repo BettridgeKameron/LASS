@@ -6,6 +6,18 @@ app = Flask(__name__)
 CORS(app)
 
 
+def mark_the_words(s: str) -> list:
+    words = s.split()
+    marked_string = ' '.join([f'<span style="background-color: rgb(255, 255, 128); ">{word}</span>' if word.lower() == 'the' else word for word in words])
+    return marked_string
+
+@app.route("/mark_the_words", methods=["POST"])
+def mark_the_words_endpoint():
+    data = request.json
+    string_to_mark = data.get("string", "")
+    marked_string = mark_the_words(string_to_mark)
+    return jsonify({"marked_string": marked_string})
+
 def rev_str(s: str) -> str:
     """This is a sample util to demonstrate how to do unit testing in tests/unit/test_utils.py"""
     return s[::-1]
