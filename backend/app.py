@@ -16,7 +16,7 @@ def sent_analysis(s: str) -> list:
     words = s.split()
     sentiment_result = 0
     marked_string = ' '.join([f'<span style="background-color: #66ff00; ">{word}</span>' if word.lower() == 'the' else word for word in words])
-    sentiment_result += 0.8 * s.lower().count('the')
+    sentiment_result += round(0.8 * s.lower().count('the'), 3)
     print(sentiment_result)
     return marked_string
 
