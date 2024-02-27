@@ -14,11 +14,12 @@ def rev_str(s: str) -> str:
 #------------------------
 def sent_analysis(s: str) -> list:
     words = s.split()
-    sentiment_result = 0
+    sentiment_score = 0
     marked_string = ' '.join([f'<span style="background-color: #66ff00; ">{word}</span>' if word.lower() == 'the' else word for word in words])
-    sentiment_result += round(0.8 * s.lower().count('the'), 3)
-    print(sentiment_result)
-    return marked_string
+    sentiment_score += round(0.8 * s.lower().count('the'), 3)
+
+    print(sentiment_score)
+    return marked_string, sentiment_score
 
 #------------------------
 
@@ -54,8 +55,8 @@ def obfuscate():
 def sentiment_analysis():
     data = request.json
     string_to_mark = data.get("string", "")
-    sentiment_result = sent_analysis(string_to_mark)
-    return jsonify({"sentiment_result": sentiment_result})
+    words, score = sent_analysis(string_to_mark)
+    return jsonify({"words": words, "score": score})
 
 
 @app.route("/api/v1/text/predict-user-attributes", methods=["POST"])
