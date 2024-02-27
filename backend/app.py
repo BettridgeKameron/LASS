@@ -1,7 +1,7 @@
 # This is just some random generated boilerplate code to have something initial
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-
+import string
 app = Flask(__name__)
 CORS(app)
 
@@ -10,18 +10,36 @@ def rev_str(s: str) -> str:
     """This is a sample util to demonstrate how to do unit testing in tests/unit/test_utils.py"""
     return s[::-1]
 
-#Code block below marks the words "the"
-#------------------------
-def sent_analysis(s: str) -> list:
-    words = s.split()
-    sentiment_score = 0
-    marked_string = ' '.join([f'<span style="background-color: #66ff00; ">{word}</span>' if word.lower() == 'the' else word for word in words])
-    sentiment_score += round(0.8 * s.lower().count('the'), 3)
+def sent_analysis(s: str) -> dict:
+    # Function to clean and split words from the input string
+    def clean_and_split(word):
+        cleaned_word = word.lower().strip(string.punctuation)
+        return cleaned_word, word
 
-    print(sentiment_score)
+    # Split the input string using spaces
+    words = s.split()
+
+    # Clean and split each word using predefined symbols
+    cleaned_words_with_punctuation = [clean_and_split(word) for word in words]
+
+    marked_words = {
+        'love': {'score': 0.8, 'color': 'rgb(163 230 53)'},
+        'sunny': {'score': 0.9, 'color': 'rgb(132 204 22)'},
+        'days': {'score': 0.1, 'color': 'rgb(77 124 15)'},
+        'but': {'score': -.1, 'color': 'rgb(202 138 4)'},
+        'hate': {'score': -.9, 'color': 'rgb(244 63 94)'},
+        'rain': {'score': -.1, 'color': 'rgb(120 53 15)'},
+    }
+
+    sentiment_score = round(sum(marked_words.get(word[0], {}).get('score', 0) for word in cleaned_words_with_punctuation), 3)
+
+    # Mark words with colors, using the original word for display
+    marked_string = ' '.join(
+        [f'<span style="background-color: {marked_words[word[0]]["color"]}">{word[1]}</span>'
+        if word[0] in marked_words else word[1] for word in cleaned_words_with_punctuation])
+
     return marked_string, sentiment_score
 
-#------------------------
 
 @app.route("/reverse_string", methods=["POST"])
 def reverse_string():
