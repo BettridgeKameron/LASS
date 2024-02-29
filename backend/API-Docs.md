@@ -44,7 +44,7 @@ The `/api/v1/authorship/writeprint` endpoint gives an example on how we will han
 `POST /api/v1/text/sentiment-analysis`
 - **Description**: Analyze the sentiment of the provided text.
 - **Request Body**: `{"text": "Text to analyze sentiment..."}`
-- **Response**: `{"sentimentScore": {...}}`
+- **Response**: `{"sentimentResults":{"score":"45.5","words":[{"word1":0},{"word2":0.8},...,{"wordn":-0.1}]}}`
 
 ## User Attributes Prediction
 
