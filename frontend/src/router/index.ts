@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StringInput from '@/components/StringInput.vue'
 import HomePage from '@/views/HomePage.vue'
+import SentimentAnalysis from '@/views/SentimentAnalysis.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home-page',
     component: HomePage
+  },
+  {
+    path: '/sentiment-analysis',
+    name: 'sentiment-analysis',
+    component: SentimentAnalysis
   },
   {
     path: '/string-input',
