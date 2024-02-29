@@ -24,6 +24,7 @@
           tabindex="0"
           class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
         >
+          <li><router-link to="/sentiment-analysis">Sentiment Analysis</router-link></li>
           <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
@@ -33,6 +34,7 @@
       <!-- This div is for wider screens -->
       <div class="hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
+          <li><router-link to="/sentiment-analysis">Sentiment Analysis</router-link></li>
           <li><router-link to="/string-input">String Input</router-link></li>
         </ul>
       </div>
