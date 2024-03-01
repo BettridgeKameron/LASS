@@ -1,9 +1,14 @@
 # This is just some random generated boilerplate code to have something initial
 from flask import Flask, request, jsonify
+import nltk
+from nltk.sentiment import SentimentIntensityAnalyzer
 from flask_cors import CORS
+import html
 
 app = Flask(__name__)
+app.json.sort_keys = False
 CORS(app)
+nltk.download("vader_lexicon", quiet=True)
 
 
 def rev_str(s: str) -> str:
@@ -39,9 +44,35 @@ def obfuscate():
     return request.json
 
 
+def analyze_sentiment(text):
+    sia = SentimentIntensityAnalyzer()
+    sentiment = sia.polarity_scores(text)
+    overall_score = ((sentiment["compound"] + 1) / 2) * 100
+
+    words = text.split()
+    words_sentiments = []
+    for word in words:
+        word_score = sia.polarity_scores(word)["compound"]
+        encoded_word = html.escape(word)  # XSS Mitigation
+        words_sentiments.append({encoded_word: word_score})
+
+    return {
+        "sentimentResults": {
+            "score": f"{overall_score:.1f}",
+            "words": words_sentiments,
+        }
+    }
+
+
 @app.route("/api/v1/text/sentiment-analysis", methods=["POST"])
 def sentiment_analysis():
-    return request.json
+    data = request.get_json()
+    text = data.get("text", "")
+    if not text:
+        return jsonify({"error": "No text provided"}), 400
+
+    results = analyze_sentiment(text)
+    return jsonify(results)
 
 
 @app.route("/api/v1/text/predict-user-attributes", methods=["POST"])
