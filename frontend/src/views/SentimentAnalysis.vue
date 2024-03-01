@@ -51,22 +51,26 @@ export default defineComponent({
           const word = Object.keys(wordObj)[0]
           const score = wordObj[word]
           const colorClass = getColorClass(score)
-          return `<span class="${colorClass}">${word}</span>`
+          return `<span style="${colorClass}">${word}</span>`
         })
         .join(' ')
     })
 
     function getColorClass(score: number): string {
-      const threshold = 0.3
-      // This will by dynamic eventually (i.e. different shades of red/green instead of 1 shade of red/green). Only have to edit this function.
-
-      if (score >= threshold) {
-        return 'text-green-600'
-      } else if (score <= -threshold) {
-        return 'text-red-600'
-      } else {
-        return 'text-black'
+      const minScore = -1;
+      const maxScore = 1;
+      
+      if(score == 0){
+        return 'color: black;'
       }
+      const normalizedScore = (score - minScore) / (maxScore - minScore);
+
+      const red = Math.round(255 * (1 - normalizedScore));
+      const green = Math.round(255 * normalizedScore);
+
+      const color = `color: rgb(${red}, ${green}, 0);`;
+
+      return color;
     }
 
     async function analyzeSentiment() {
