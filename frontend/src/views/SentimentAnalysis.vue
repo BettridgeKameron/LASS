@@ -72,7 +72,7 @@ export default defineComponent({
       const red = Math.round(255 * (1 - normalizedScore));
       const green = Math.round(255 * normalizedScore);
 
-      const color = `color: rgb(${red}, ${green}, 0);`;
+      const color = `background-color: rgb(${red}, ${green}, 0); color: black`;
 
       return color;
     }
