@@ -50,23 +50,31 @@ export default defineComponent({
         .map((wordObj: SentimentWord) => {
           const word = Object.keys(wordObj)[0]
           const score = wordObj[word]
-          const colorClass = getColorClass(score)
-          return `<span class="${colorClass}">${word}</span>`
+          const colorStyle = getColorStyle(score)
+          return `<span style="${colorStyle}">${word}</span>`
         })
         .join(' ')
     })
 
-    function getColorClass(score: number): string {
-      const threshold = 0.3
-      // This will by dynamic eventually (i.e. different shades of red/green instead of 1 shade of red/green). Only have to edit this function.
-
-      if (score >= threshold) {
-        return 'text-green-600'
-      } else if (score <= -threshold) {
-        return 'text-red-600'
-      } else {
-        return 'text-black'
+    function getColorStyle(score: number): string {
+      const minScore = -1;
+      const maxScore = 1;
+      
+      //Calculate if word is emotionally connected
+      if(score == 0){
+        return 'color: black;'
       }
+
+      // Map the score to a value between 0 and 1
+      const normalizedScore = (score - minScore) / (maxScore - minScore);
+
+      // Calculate RGB values 
+      const red = Math.round(255 * (1 - normalizedScore));
+      const green = Math.round(255 * normalizedScore);
+
+      const color = `background-color: rgb(${red}, ${green}, 0); color: black`;
+
+      return color;
     }
 
     async function analyzeSentiment() {
