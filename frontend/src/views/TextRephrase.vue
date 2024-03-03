@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto p-4">
-    <h1 class="text-4xl font-bold mb-2 py-10">Text Rephrasal Tool</h1>
+    <h1 class="text-4xl font-bold mb-2 py-10">Text Rephrase Tool</h1>
     <div class="flex flex-col space-y-4">
       <div class="flex space-x-3">
 
