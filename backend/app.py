@@ -8,7 +8,7 @@ import html
 app = Flask(__name__)
 app.json.sort_keys = False
 CORS(app)
-nltk.download("vader_lexicon", quiet=True)
+nltk.download("vader_lexicon", quiet=False)
 
 
 def rev_str(s: str) -> str:
@@ -36,13 +36,15 @@ def get_writeprint_results(job_id):
 
 @app.route("/api/v1/text/rephrase", methods=["POST"])
 def rephrase():
-    return request.json
+    data = request.json
+    string_to_rephrase = data.get("text", "")
+    rephrased_string = rev_str(string_to_rephrase)
+    return jsonify({"rephrased_result": rephrased_string})
 
 
 @app.route("/api/v1/text/obfuscate", methods=["POST"])
 def obfuscate():
     return request.json
-
 
 def analyze_sentiment(text):
     sia = SentimentIntensityAnalyzer()
@@ -63,7 +65,6 @@ def analyze_sentiment(text):
         }
     }
 
-
 @app.route("/api/v1/text/sentiment-analysis", methods=["POST"])
 def sentiment_analysis():
     data = request.get_json()
@@ -73,7 +74,6 @@ def sentiment_analysis():
 
     results = analyze_sentiment(text)
     return jsonify(results)
-
 
 @app.route("/api/v1/text/predict-user-attributes", methods=["POST"])
 def predict_user_attributes():
