@@ -1,8 +1,10 @@
 <template>
-  <div class="container mx-auto p-4 max-w-2xl">
+  <div class="container mx-auto p-4 max-w-5xl">
+    <h1 class="text-4xl font-bold mb-2 py-5">Sentiment Analysis</h1>
     <div class="flex flex-col space-y-4">
       <textarea
         v-model="textToAnalyze"
+        style="height: 500px;   resize: none;"
         class="w-full border-2 border-gray-300 p-3 rounded-md"
         placeholder="Type something..."
         rows="4"
@@ -14,7 +16,10 @@
       >
         Send
       </button>
-      <div v-html="styledText" class="p-6 rounded shadow bg-neutral-content"></div>
+      <div class="p-6 rounded shadow bg-neutral-content border-2 border-gray-300" style="word-break: break-all;">
+        <div v-if="styledText" v-html="styledText"></div>
+        <div v-else class="text-neutral" style ="color: rgba(0, 0, 0, 0.5);">Sentiment Output</div>
+      </div>
       <div v-if="errorMessage" class="text-center font-semibold text-red-500">
         {{ errorMessage }}
       </div>

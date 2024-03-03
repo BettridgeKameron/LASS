@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import StringInput from '@/components/StringInput.vue'
 import HomePage from '@/views/HomePage.vue'
 import SentimentAnalysis from '@/views/SentimentAnalysis.vue'
+import TextRephrase from '@/views/TextRephrase.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/string-input',
     name: 'string-input',
     component: StringInput
+  },
+  {
+    path: '/text-rephrase',
+    name: 'text-rephrase',
+    component: TextRephrase
   }
 ]
 
