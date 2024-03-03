@@ -90,6 +90,8 @@ export default defineComponent({
         })
         sentimentResults.value = response.data.sentimentResults
         sentimentScore.value = response.data.sentimentResults.score
+
+        console.log(typeof sentimentScore.value)
       } catch (error) {
         errorMessage.value = 'There was an error analyzing the sentiment. Please try again.'
         console.error('Error:', error)
