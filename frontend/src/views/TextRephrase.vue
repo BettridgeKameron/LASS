@@ -7,25 +7,24 @@
         <textarea
           v-model="textToAnalyze"
           type="text"
-          style="width: 800px; height: 500px;  resize: none;"
+          style="width: 800px; height: 500px;  resize: none; "
           class="border-2 border-gray-300 p-2 rounded-md"
           placeholder="Input: Enter a string"
         ></textarea>
-
         <textarea
           readonly
-          style="width: 800px; height: 500px; resize: none;"
-          class="w-1/2 border-2 border-gray-300 p-2 rounded-md self-end"
-        >
-        {{ rephrasedResult }}
-        </textarea>
+          style="width: 800px; height: 500px;  resize: none; color: black; "
+          class="border-2 border-gray-300 p-2 rounded-md bg-neutral-content"
+        >{{ rephrasedResult }}</textarea>
     </div>
+    <div class="flex justify-center">
       <button
           @click="rephraseText"
-          class="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class=" w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded"
         >
           Rephrase
         </button>
+    </div>
       <div v-if="errorMessage" class="text-red-500">Error: {{ errorMessage }}</div>
     </div>
   </div>
@@ -65,4 +64,13 @@
     }
   })
   </script>
+<style>
+  .custom-textarea {
+    width: 100px;
+    height: 500px;
+    resize: none;
+    color: black;
+    text-align: justify; 
+  }
+</style>
   
