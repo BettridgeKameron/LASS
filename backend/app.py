@@ -8,7 +8,7 @@ import html
 app = Flask(__name__)
 app.json.sort_keys = False
 CORS(app)
-nltk.download("vader_lexicon", quiet=False)
+nltk.download("vader_lexicon", quiet=True)
 
 
 def rev_str(s: str) -> str:
