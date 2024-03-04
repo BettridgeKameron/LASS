@@ -1,8 +1,10 @@
 <template>
-  <div class="container mx-auto p-4 max-w-2xl">
+  <div class="container mx-auto p-4 max-w-5xl">
+    <h1 class="text-4xl font-bold mb-2 py-5">Sentiment Analysis</h1>
     <div class="flex flex-col space-y-4">
       <textarea
         v-model="textToAnalyze"
+        style="height: 500px; resize: none"
         class="w-full border-2 border-gray-300 p-3 rounded-md"
         placeholder="Type something..."
         rows="4"
@@ -14,7 +16,13 @@
       >
         Send
       </button>
-      <div v-html="styledText" class="p-6 rounded shadow bg-neutral-content"></div>
+      <div
+        class="p-6 rounded shadow bg-neutral-content border-2 border-gray-300"
+        style="word-break: break-all"
+      >
+        <div v-if="styledText" v-html="styledText"></div>
+        <div v-else class="text-neutral" style="color: rgba(0, 0, 0, 0.5)">Sentiment Output</div>
+      </div>
       <div v-if="errorMessage" class="text-center font-semibold text-red-500">
         {{ errorMessage }}
       </div>
@@ -57,24 +65,24 @@ export default defineComponent({
     })
 
     function getColorStyle(score: number): string {
-      const minScore = -1;
-      const maxScore = 1;
-      
+      const minScore = -1
+      const maxScore = 1
+
       //Calculate if word is emotionally connected
-      if(score == 0){
+      if (score == 0) {
         return 'color: black;'
       }
 
       // Map the score to a value between 0 and 1
-      const normalizedScore = (score - minScore) / (maxScore - minScore);
+      const normalizedScore = (score - minScore) / (maxScore - minScore)
 
-      // Calculate RGB values 
-      const red = Math.round(255 * (1 - normalizedScore));
-      const green = Math.round(255 * normalizedScore);
+      // Calculate RGB values
+      const red = Math.round(255 * (1 - normalizedScore))
+      const green = Math.round(255 * normalizedScore)
 
-      const color = `background-color: rgb(${red}, ${green}, 0); color: black`;
+      const color = `background-color: rgb(${red}, ${green}, 0); color: black`
 
-      return color;
+      return color
     }
 
     async function analyzeSentiment() {
@@ -85,6 +93,8 @@ export default defineComponent({
         })
         sentimentResults.value = response.data.sentimentResults
         sentimentScore.value = response.data.sentimentResults.score
+
+        console.log(typeof sentimentScore.value)
       } catch (error) {
         errorMessage.value = 'There was an error analyzing the sentiment. Please try again.'
         console.error('Error:', error)
