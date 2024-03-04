@@ -25,7 +25,9 @@
           Rephrase
         </button>
       </div>
-      <div v-if="errorMessage" class="text-red-500">Error: {{ errorMessage }}</div>
+      <div v-if="errorMessage" class="flex justify-center text-red-500">
+        Error: {{ errorMessage }}
+      </div>
     </div>
   </div>
 </template>
