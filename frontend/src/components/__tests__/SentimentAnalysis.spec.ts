@@ -28,7 +28,7 @@ describe('SentimentAnalysis.vue', () => {
     const input = wrapper.find('textarea')
     await input.setValue('This is a test sentence.')
     expect(wrapper.vm.textToAnalyze).toBe('This is a test sentence.')
-  })
+  });
 
   it('analyzeSentiment clears error message before API call', async() => {
     const wrapper = shallowMount(SentAnalyze, {
@@ -43,5 +43,5 @@ describe('SentimentAnalysis.vue', () => {
     await new Promise(resolve => setTimeout(resolve, 0))
     expect(wrapper.vm.errorMessage).toBe('')
 
-  })
+  });
 });
