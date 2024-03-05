@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import StringInput from '@/components/StringInput.vue'
 import HomePage from '@/views/HomePage.vue'
 import SentimentAnalysis from '@/views/SentimentAnalysis.vue'
-import TextRephrase from '@/views/TextRephrase.vue'
+import TextRephrase  from '@/views/TextRephrase.vue'
 
 const routes = [
   {
@@ -31,5 +31,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
+<<<<<<< Updated upstream
 
+=======
+router.beforeEach((to) => {
+  document.title = (to.meta?.title as string) ?? 'Default Title';
+})
+>>>>>>> Stashed changes
 export default router
