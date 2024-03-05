@@ -187,7 +187,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import PersonCard from '@/components/PersonCard.vue'
-import TitleComponent from '@/components/TitleComponent.vue'
 
 export default defineComponent({
   name: 'HomePage',
