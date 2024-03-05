@@ -1,6 +1,11 @@
 <template>
   <div class="container mx-auto p-4 max-w-5xl">
     <h1 class="text-4xl font-bold mb-2 py-5">Sentiment Analysis</h1>
+  </div>
+  <div id="app">
+    <TitleComponent title="Lass-Sentiment Analysis"></TitleComponent>
+  </div>
+  <div class="container mx-auto p-4 max-w-2xl">
     <div class="flex flex-col space-y-4">
       <textarea
         v-model="textToAnalyze"

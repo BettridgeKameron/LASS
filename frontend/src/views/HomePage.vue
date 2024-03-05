@@ -1,4 +1,7 @@
 <template>
+  <div id="app">
+    <TitleComponent title="Lass-Home Page"></TitleComponent>
+  </div>
   <div class="p-8">
     <div class="text-center mb-12">
       <h1 class="text-4xl font-bold mb-2">Linguistic Analysis & Stylometry Suite</h1>
@@ -180,6 +183,7 @@
   </div>
 </template>
 
+
 <script lang="ts">
 import { defineComponent } from 'vue'
 import PersonCard from '@/components/PersonCard.vue'
@@ -187,10 +191,11 @@ import PersonCard from '@/components/PersonCard.vue'
 export default defineComponent({
   name: 'HomePage',
   components: {
-    PersonCard
+    PersonCard,
   },
   data() {
     return {
+
       teamMembers: [
         {
           name: 'Kameron Bettridge',
@@ -214,7 +219,7 @@ export default defineComponent({
           name: 'Zachary Wilhite',
           major: 'CSE and Psychology',
           photo: '/img/zach.jpg',
-          infoUrl: 'https://github.com/agentz101'
+          infoUrl: 'https://www.linkedin.com/in/zewilhite/'
         }
       ],
       professors: [
