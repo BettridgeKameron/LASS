@@ -43,11 +43,4 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
-<<<<<<< Updated upstream
-
-=======
-router.beforeEach((to) => {
-  document.title = (to.meta?.title as string) ?? 'Default Title';
-})
->>>>>>> Stashed changes
 export default router
