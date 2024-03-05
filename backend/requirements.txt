@@ -1,3 +1,6 @@
 flask
 flask-cors
 nltk
+protobuf
+torch
+git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git#egg=parrot
