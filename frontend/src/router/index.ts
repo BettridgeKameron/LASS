@@ -8,22 +8,34 @@ const routes = [
   {
     path: '/',
     name: 'home-page',
-    component: HomePage
+    component: HomePage,
+    meta: {
+      title: 'LASS-Home Page'
+    },
   },
   {
     path: '/sentiment-analysis',
     name: 'sentiment-analysis',
-    component: SentimentAnalysis
+    component: SentimentAnalysis,
+    meta: {
+      title: 'LASS-Sentiment Analysis'
+    },
   },
   {
     path: '/string-input',
     name: 'string-input',
-    component: StringInput
+    component: StringInput,
+    meta: {
+      title: 'LASS-String Input'
+    }
   },
   {
     path: '/text-rephrase',
     name: 'text-rephrase',
-    component: TextRephrase
+    component: TextRephrase,
+    meta: {
+      title: 'LASS-Text Rephrase'
+    }
   }
 ]
 

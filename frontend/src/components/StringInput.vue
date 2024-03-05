@@ -1,5 +1,8 @@
 // This is just some random generated boilerplate code to have something initial
 <template>
+  <div id="app">
+    <TitleComponent title="Lass-String Input"></TitleComponent>
+  </div>
   <div class="container mx-auto p-4 max-w-2xl">
     <div class="flex flex-col space-y-4">
       <input
