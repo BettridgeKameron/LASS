@@ -27,6 +27,7 @@
           <li><router-link to="/sentiment-analysis">Sentiment Analysis</router-link></li>
           <li><router-link to="/text-rephrase">Text Rephrase</router-link></li>
           <li><router-link to="/string-input">String Input</router-link></li>
+          <li><router-link to="/fingerprint-creation">Fingerprint Creation</router-link></li>
         </ul>
       </div>
 
@@ -38,6 +39,7 @@
           <li><router-link to="/sentiment-analysis">Sentiment Analysis</router-link></li>
           <li><router-link to="/text-rephrase">Text Rephrase</router-link></li>
           <li><router-link to="/string-input">String Input</router-link></li>
+          <li><router-link to="/fingerprint-creation">Fingerprint Creation</router-link></li>
         </ul>
       </div>
     </div>

@@ -3,6 +3,7 @@ import StringInput from '@/components/StringInput.vue'
 import HomePage from '@/views/HomePage.vue'
 import SentimentAnalysis from '@/views/SentimentAnalysis.vue'
 import TextRephrase  from '@/views/TextRephrase.vue'
+import FingerprintCreation from '@/views/FingerprintCreation.vue'
 
 const routes = [
   {
@@ -35,6 +36,14 @@ const routes = [
     component: TextRephrase,
     meta: {
       title: 'LASS-Text Rephrase'
+    }
+  },
+  {
+    path: '/fingerprint-creation',
+    name: 'finger-print-creation',
+    component: FingerprintCreation,
+    meta: {
+      title: 'LASS-Fingerprint Creation'
     }
   }
 ]
