@@ -1,41 +1,42 @@
 <template>
-  <div class="container mx-auto p-4 max-w-5xl">
-    <h1 class="text-4xl font-bold mb-2 py-5">Sentiment Analysis</h1>
-  </div>
-  <div id="app">
+    <div id="app">
     <TitleComponent title="Lass-Sentiment Analysis"></TitleComponent>
   </div>
-  <div class="container mx-auto p-4 max-w-2xl">
+  <div class="container mx-auto p-4">
+    <h1 class="text-4xl text-center font-bold mb-2 py-10">Sentiment Analysis</h1>
     <div class="flex flex-col space-y-4">
-      <textarea
-        v-model="textToAnalyze"
-        style="height: 500px; resize: none"
-        class="w-full border-2 border-gray-300 p-3 rounded-md"
-        placeholder="Type something..."
-        rows="4"
-      ></textarea>
-
+      <div class="flex space-x-3">
+        <textarea
+          v-model="textToAnalyze"
+          style="width: 800px; height: 500px; resize: none"
+          class="w-full border-2 border-gray-300 p-3 rounded-md"
+          placeholder="Input: text to be anaylyzed for strong positive or negative emotional meaning."
+          rows="4"
+        ></textarea>
+        <div
+          class="p-2 rounded-md shadow bg-neutral-content border-2 border-gray-300"
+          style="width: 800px; height: 500px; word-break: break-all"
+        >
+          <div v-if="styledText" v-html="styledText"></div>
+          <div v-else class="text-neutral border-2" style="color: rgba(0, 0, 0, 0.5)">Sentiment Output</div>
+        </div>
+        <div v-if="errorMessage" class="text-center font-semibold text-red-500">
+          {{ errorMessage }}
+        </div>
+      </div>
+      <div v-if="sentimentScore" class="text-xl text-center font-semibold">
+          Overall Sentiment Score: {{ sentimentScore }}
+      </div>
+      <div class="flex justify-center">
       <button
         @click="analyzeSentiment"
-        class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="w-1/3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded"
       >
         Send
       </button>
-      <div
-        class="p-6 rounded shadow bg-neutral-content border-2 border-gray-300"
-        style="word-break: break-all"
-      >
-        <div v-if="styledText" v-html="styledText"></div>
-        <div v-else class="text-neutral" style="color: rgba(0, 0, 0, 0.5)">Sentiment Output</div>
-      </div>
-      <div v-if="errorMessage" class="text-center font-semibold text-red-500">
-        {{ errorMessage }}
-      </div>
-      <div v-if="sentimentScore" class="text-xl text-center font-semibold">
-        Overall Sentiment Score: {{ sentimentScore }}
       </div>
     </div>
-  </div>
+</div>
 </template>
 
 <script lang="ts">

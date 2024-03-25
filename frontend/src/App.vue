@@ -1,6 +1,6 @@
 <template>
   <div class="navbar bg-base-100">
-    <div class="navbar-start">
+    <div class="navbar-start border-2 border-gray-300 p-2 rounded-md">
       <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
           <svg

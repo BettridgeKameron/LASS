@@ -3,7 +3,7 @@
     <TitleComponent title="Lass-Text Rephrase"></TitleComponent>
   </div>
   <div class="container mx-auto p-4">
-    <h1 class="text-4xl font-bold mb-2 py-10">Text Rephrase Tool</h1>
+    <h1 class="text-4xl text-center font-bold mb-2 py-10">Text Rephrase Tool</h1>
     <div class="flex flex-col space-y-4">
       <div class="flex space-x-3">
         <textarea
@@ -11,14 +11,15 @@
           type="text"
           style="width: 800px; height: 500px; resize: none"
           class="border-2 border-gray-300 p-2 rounded-md"
-          placeholder="Input: Enter a string"
+          placeholder="Input: Enter text to be rephrased"
         ></textarea>
         <textarea
           v-model="rephrasedResult"
           readonly
           style="width: 800px; height: 500px; resize: none; color: black"
           class="border-2 border-gray-300 p-2 rounded-md bg-neutral-content"
-        ></textarea>
+          placeholder="Rephrased Text"
+          ></textarea>
       </div>
       <div class="flex justify-center">
         <button
